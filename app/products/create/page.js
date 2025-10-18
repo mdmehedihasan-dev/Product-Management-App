@@ -23,7 +23,6 @@ export default function CreateProduct() {
   };
 
   const handleImagesChange = (e) => {
-    // Convert comma-separated string into array
     setForm({ ...form, images: e.target.value.split(",") });
   };
 
