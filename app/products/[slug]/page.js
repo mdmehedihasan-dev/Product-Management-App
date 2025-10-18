@@ -49,14 +49,14 @@ export default function ProductDetails() {
   return (
     <div className="p-8">
       <div className="block md:flex gap-x-10 justify-between">
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <img
             src={product.images[0]}
             alt={product.name}
             className="w-full h-auto md:h-[500px] object-cover rounded-xl mb-4"
           />
         </div>
-        <div className="flex flex-col justify-between w-1/2">
+        <div className="flex flex-col justify-between w-full md:w-1/2">
           <div className="flex flex-col gap-y-5">
             <h3 className="text-3xl font-bold ">
               Name : <span className="text-[#AD8A64]">{product.name}</span>{" "}
