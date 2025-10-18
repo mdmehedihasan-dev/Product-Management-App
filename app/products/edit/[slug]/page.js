@@ -20,7 +20,7 @@ export default function EditProductPage() {
 
   const [updateProduct, { isLoading: updating }] = useUpdateProductMutation();
 
-  // Form state
+  //============================= Form state=========================
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -29,7 +29,7 @@ export default function EditProductPage() {
     images: [],
   });
 
-  // Populate form when product loads
+  //============================ Populate form when product loads==================
   useEffect(() => {
     if (product) {
       setForm({
@@ -42,7 +42,7 @@ export default function EditProductPage() {
     }
   }, [product]);
 
-  // Handle input changes
+  //========================== Handle input changes======================
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -52,7 +52,7 @@ export default function EditProductPage() {
     setForm({ ...form, images: e.target.value.split(",") });
   };
 
-  // Handle submit
+  // =============== Handle submit=====================
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.price || !form.categoryId) {

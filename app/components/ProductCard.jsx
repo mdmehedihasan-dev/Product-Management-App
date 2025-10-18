@@ -8,11 +8,23 @@ export default function ProductCard({ product }) {
       />
       <div className="flex justify-between items-center">
         <div>
-          <h3 className="font-bold text-[#AD8A64] mt-2">{product.name.split(" ").slice(0, 2).join(" ")}</h3>
-          <p className="text-[#4E6E5D]">${product.price}</p>
+          <h3 className="font-bold">
+            Name :
+            <span className="text-[#AD8A64]">
+              {product.name.split(" ").slice(0, 1).join(" ")}
+            </span>
+          </h3>
+          <p>
+            Price : <span className="text-[#A44A3F]">${product.price}</span>
+          </p>
         </div>
         <div className="mt-2">
-          {product.description.split(" ").slice(0, 2).join(" ")}...
+          <h3>
+            Des :
+            <span className="text-[#4E6E5D] ">
+              {product.description.split(" ").slice(0, 1).join(" ")}...
+            </span>
+          </h3>
           <p className="text-[#EFF1F3] mb-4">
             Category: {product.category.name}
           </p>

@@ -21,20 +21,14 @@ export default function ProductsPage() {
   const [search, setSearch] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [deleteId, setDeleteId] = useState(null);
-
-  // Fetch products with search and category filter
   const {
     data: products,
     isLoading,
     refetch,
   } = useGetProductsQuery({ offset, limit, search, categoryId });
-
-  // Fetch categories for dropdown
   const { data: categories } = useGetCategoriesQuery({ offset: 0, limit: 100 });
 
   const [deleteProduct] = useDeleteProductMutation();
-
-  // Refetch when search or category changes (with debounce)
   useEffect(() => {
     const timer = setTimeout(() => refetch(), 500);
     return () => clearTimeout(timer);
@@ -49,7 +43,7 @@ export default function ProductsPage() {
 
   return (
     <div className="p-8">
-      {/* Search & Category Filter */}
+      {/* ========================= Search & Category Filter ========================= */}
       <div className="flex justify-between mb-4 gap-4">
         <input
           type="text"
@@ -73,7 +67,7 @@ export default function ProductsPage() {
         </select>
       </div>
 
-      {/* Products List */}
+      {/* =========================== Products List ======================== */}
       {isLoading ? (
         <Loader />
       ) : (
@@ -93,8 +87,8 @@ export default function ProductsPage() {
         </div>
       )}
 
-      {/* Pagination */}
-      <div className="flex flex-col items-center gap-2 mt-6">
+      {/* ========================= Pagination =========================*/}
+      <div className="flex flex-col items-center gap-2 ">
         <div className="flex gap-4">
           <button
             disabled={offset === 0}
@@ -104,7 +98,7 @@ export default function ProductsPage() {
             <GrLinkPrevious />
           </button>
 
-          {/* Page Numbers */}
+          {/*=========================== Page Numbers ============================= */}
           <div className="flex gap-2 mt-2">
             {Array.from(
               { length: Math.ceil((products?.total || 50) / limit) },
@@ -134,7 +128,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Delete Confirmation Modal */}
+      {/*======================== Delete Confirmation Modal ===========================*/}
       {deleteId && (
         <ConfirmationModal
           title="Delete Product"

@@ -9,7 +9,6 @@ body {
   color: #EFF1F3;
 }
 
-/* Card */
 .card {
   @apply bg-[#0D1821] rounded-2xl shadow-md p-4;
 }

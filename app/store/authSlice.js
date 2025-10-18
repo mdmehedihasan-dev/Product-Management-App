@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { api } from "./api";
 
-// Load saved token and email from localStorage when app starts
 const initialState = {
   token: typeof window !== "undefined" ? localStorage.getItem("token") : null,
   email: typeof window !== "undefined" ? localStorage.getItem("email") : null,
@@ -14,7 +13,6 @@ const authSlice = createSlice({
     logout: (state) => {
       state.token = null;
       state.email = null;
-      // Remove from localStorage on logout
       if (typeof window !== "undefined") {
         localStorage.removeItem("token");
         localStorage.removeItem("email");
@@ -23,7 +21,6 @@ const authSlice = createSlice({
     setAuth: (state, action) => {
       state.token = action.payload.token;
       state.email = action.payload.email;
-      // Save to localStorage when logged in
       if (typeof window !== "undefined") {
         localStorage.setItem("token", action.payload.token);
         localStorage.setItem("email", action.payload.email);
@@ -35,8 +32,7 @@ const authSlice = createSlice({
       api.endpoints.login.matchFulfilled,
       (state, { payload, meta }) => {
         state.token = payload.token;
-        state.email = meta.arg.originalArgs; // store email
-        // Save token and email to localStorage
+        state.email = meta.arg.originalArgs; 
         if (typeof window !== "undefined") {
           localStorage.setItem("token", payload.token);
           localStorage.setItem("email", meta.arg.originalArgs);
