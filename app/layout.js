@@ -1,5 +1,4 @@
 "use client";
-
 import "./globals.css";
 import ReduxProvider from "./components/ReduxProvider";
 import Header from "./components/Header";

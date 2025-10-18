@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { setAuth } from "../store/authSlice";
 import { useRouter } from "next/navigation";
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [login] = useLoginMutation();
@@ -16,9 +17,9 @@ export default function LoginPage() {
     try {
       const res = await login(email).unwrap();
       dispatch(setAuth({ token: res.token, email }));
-      router.push("/products"); // redirect after login
+      router.push("/products"); 
     } catch (err) {
-      alert("Login failed!");
+       alert("Login failed!");
     }
   };
 

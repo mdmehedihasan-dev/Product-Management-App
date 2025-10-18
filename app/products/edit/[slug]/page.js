@@ -75,7 +75,7 @@ export default function EditProductPage() {
   if (productLoading || categoriesLoading) return <Loader />;
 
   return (
-    <div className="p-8">
+    <div className="p-8 flex justify-center">
       <form
         className="bg-[#0D1821] p-6 rounded-xl w-full max-w-md "
         onSubmit={handleSubmit}
